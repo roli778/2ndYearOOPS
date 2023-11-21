@@ -1,0 +1,62 @@
+class Car {
+    double price;
+    int year;
+
+    public Car(double price, int year) {
+        this.price = price;
+        this.year = year;
+    }
+
+    public String toString() {
+        return "Car[price=" + price + ", year=" + year + "]";
+    }
+
+    public double calculateSalePrice() {
+        return 0.0;
+    }
+}
+
+class ClassicCar extends Car {
+    public ClassicCar(double price, int year) {
+        super(price, year);
+    }
+
+    public double calculateSalePrice() {
+        return 10000.0;
+    }
+}
+
+class SportCar extends Car {
+    public SportCar(double price, int year) {
+        super(price, year);
+    }
+
+    public double calculateSalePrice() {
+        if (year > 2000) {
+            return 0.75 * price;
+        } else if (year > 1995) {
+            return 0.5 * price;
+        } else {
+            return 0.25 * price;
+        }
+    }
+}
+public class CarTester {
+    public static void main(String[] args) {
+        // Creating a Car
+        Car car = new Car(20000.0, 2005);
+        System.out.println("Car: " + car);
+        System.out.println("Sale Price: " + car.calculateSalePrice());
+
+        // Creating a ClassicCar
+        ClassicCar classicCar = new ClassicCar(30000.0, 1990);
+        System.out.println("ClassicCar: " + classicCar);
+        System.out.println("Sale Price: " + classicCar.calculateSalePrice());
+
+        // Creating a SportCar
+        SportCar sportCar = new SportCar(40000.0, 2002);
+        System.out.println("SportCar: " + sportCar);
+        System.out.println("Sale Price: " + sportCar.calculateSalePrice());
+    }
+}
+
